@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="styles.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+    </div>
+
+    <script>
+        const container = document.querySelector(".container")
+        for(let i = 0; i < 16; i++){
+            let row = document.createElement("div");
+            row.classList.add("container")
+            container.appendChild(row);
+            for(let j = 0; j < 16; j++){
+                let div = document.createElement("div");
+                div.classList.add("square")
+                row.appendChild(div);
+            }
+        }
+    </script>
+</body>
+</html>
