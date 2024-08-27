@@ -16,15 +16,45 @@
     </style>
 
     <h1>hello</h1>
+    <div id="buttons">
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
+    </div>
+
+    <div id="score">
+        <span id="computerChoice"></span>
+        <p>Human Score: </p>
+        <p>Computer Score: </p>
+    </div>
+
     <script>
         const choices = ["rock", "paper", "scissors"]
         let humanScore = 0;
         let computerScore = 0;
 
+        let buttons = document.querySelector("#buttons")
+        buttons.addEventListener("click", (event) => {
+            let target = event.target;
+            switch(target.id){
+                case 'rock': 
+                    console.log("rock")
+                    playRound('rock')
+                    break
+                case 'paper': 
+                    console.log("paper")
+                    playRound('paper')
+                    break
+                case 'scissors':
+                    console.log("scirr")
+                    playRound('scissors')
+                    break
+            }
+        })
+
         function getComputerChoice() {
             let i = Math.floor(Math.random() * 3);
             let choice = choices[i];
-
 
             return choice;
         }
@@ -38,9 +68,9 @@
             return choice;
         }
 
-        function playRound() {
+        function playRound(val) {
             let computerChoice = getComputerChoice();
-            let humanChoice = getHumanChoice();
+            let humanChoice = val;
 
             console.log("The computer chose ", computerChoice)
             if (computerChoice == humanChoice) {
@@ -85,19 +115,7 @@
             console.log("Computer Score: ", computerScore)
             console.log("Human Score: ", humanScore)
         }
-        for (let index = 0; index < 5; index++) {
-            playRound();
-        }
-        if (computerScore < humanScore) {
-            console.log("You win!")
-        }
-        if (computerScore > humanScore) {
-            console.log("You lose!")
-        }
-        if (computerScore == humanScore) {
-            console.log("It's a tie!")
-        }
-        console.log("Game over")
+
     </script>
 </body>
 
