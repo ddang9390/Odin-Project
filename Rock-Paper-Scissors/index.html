@@ -23,9 +23,10 @@
     </div>
 
     <div id="score">
-        <span id="computerChoice"></span>
-        <p>Human Score: </p>
-        <p>Computer Score: </p>
+        <p id="computerChoice"></p>
+        <p id="humanScore">Human Score: </p>
+        <p id="computerScore">Computer Score: </p>
+        <p id="winner"></p>
     </div>
 
     <script>
@@ -72,7 +73,6 @@
             let computerChoice = getComputerChoice();
             let humanChoice = val;
 
-            console.log("The computer chose ", computerChoice)
             if (computerChoice == humanChoice) {
                 console.log("It's a tie");
             }
@@ -112,8 +112,21 @@
                         console.log("unexpected error")
                 }
             }
-            console.log("Computer Score: ", computerScore)
-            console.log("Human Score: ", humanScore)
+            let score = document.querySelector("#score");
+            let hScore = document.querySelector("#humanScore");
+            let cScore = document.querySelector("#computerScore");
+            let cChoice = document.querySelector("#computerChoice");
+
+            cChoice.innerHTML = "The computer chose " + computerChoice
+            hScore.innerHTML = "Human Score: " + humanScore
+            cScore.innerHTML = "Computer Score: " + computerScore
+            console.log(cChoice.value)
+            let winner = document.querySelector("#winner");
+
+            if(humanScore == 5 || cScore == 5){
+                let w = (humanScore == 5) ? "The winner is the human" : "The winner is the computer";
+                winner.innerHTML = w
+            }
         }
 
     </script>
