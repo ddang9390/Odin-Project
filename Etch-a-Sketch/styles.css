@@ -1,8 +1,23 @@
 .container{
     display: flex;
+
+}
+
+.row{
+    display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .square{
-    border-color: black;
+    background-color: white;
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+
+    flex-basis: 100%;
+}
+
+.hovered-square{
+    background-color: gray;
 }

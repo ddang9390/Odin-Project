@@ -15,11 +15,19 @@
         for(let i = 0; i < 16; i++){
             let row = document.createElement("div");
             row.classList.add("container")
+            row.classList.add("row")
+
             container.appendChild(row);
             for(let j = 0; j < 16; j++){
-                let div = document.createElement("div");
-                div.classList.add("square")
-                row.appendChild(div);
+                let square = document.createElement("div");
+                square.classList.add("square")
+                square.addEventListener("mouseover", (event) => {
+                    square.classList.add("hovered-square")
+                })
+                square.addEventListener("mouseleave", (event) => {
+                    square.classList.remove("hovered-square")
+                })
+                row.appendChild(square);
             }
         }
     </script>
