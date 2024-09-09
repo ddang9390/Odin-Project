@@ -11,25 +11,85 @@
     </div>
 
     <script>
-        const container = document.querySelector(".container")
-        for(let i = 0; i < 16; i++){
-            let row = document.createElement("div");
-            row.classList.add("container")
-            row.classList.add("row")
+        let num_squares = 0;
 
-            container.appendChild(row);
-            for(let j = 0; j < 16; j++){
-                let square = document.createElement("div");
-                square.classList.add("square")
-                square.addEventListener("mouseover", (event) => {
-                    square.classList.add("hovered-square")
-                })
-                square.addEventListener("mouseleave", (event) => {
-                    square.classList.remove("hovered-square")
-                })
-                row.appendChild(square);
-            }
+        const MAX_HEIGHT = 500;
+        const MAX_WIDTH = 500;
+        const container = document.querySelector(".container");
+        let grid = document.createElement("div")
+        grid.classList.add("grid")
+
+        function createInput(){
+            let input_section = document.createElement("form");
+   
+
+            let input = document.createElement("input");
+            input.type = "number";
+            input.id = "num_squares";
+
+            let submit = document.createElement("input");
+            submit.type = "submit";
+            submit.value = "Submit";
+            submit.onclick = "getSquares()";
+
+            input_section.appendChild(input);
+            input_section.appendChild(submit);
+
+            input_section.addEventListener("submit", function(e){
+                e.preventDefault();
+                grid.innerHTML = "";
+                num_squares = document.getElementById("num_squares").value;
+                console.log(num_squares);
+                if(num_squares <= 100){
+                    createSquares()
+                    container.appendChild(grid);
+                }
+                else if(num_squares < 0){
+                    alert("Please input a number that is greater than 0")
+                }
+                else{
+                    alert("Please input a number that is 100 or less")
+                }
+            })
+
+            
+            return input_section
         }
+
+        function createSquares(){
+            let height = MAX_HEIGHT / num_squares;
+            let width = MAX_WIDTH / num_squares;
+            for(let i = 0; i < num_squares; i++){
+                let row = document.createElement("div");
+
+                row.classList.add("row")
+
+                grid.appendChild(row);
+                
+                for(let j = 0; j < num_squares; j++){
+                    let square = document.createElement("div");
+                    square.classList.add("square");
+                    square.addEventListener("mouseover", (event) => {
+                        square.classList.add("hovered-square");
+                    })
+                    square.addEventListener("mouseleave", (event) => {
+                        square.classList.remove("hovered-square");
+                    })
+                    square.style.height = String(height) + "px";
+                    square.style.width = String(width) + "px";
+                    row.appendChild(square);
+                }
+            }
+            //container.appendChild(grid);
+        }
+        
+
+        function main(){
+            let i = createInput();
+            container.appendChild(i);
+        }
+
+        main();
     </script>
 </body>
 </html>
