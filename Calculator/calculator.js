@@ -54,5 +54,12 @@ function storeNumber(o, num){
 
 function inputNumber(num){
     let inputField = document.querySelector("#inputField");
-    inputField.value += num
+    inputField.value += num;
+}
+
+function clearField(){
+    let inputField = document.querySelector("#inputField");
+    inputField.value = "";
+
+    console.log("fse")
 }
